@@ -17,6 +17,7 @@ const rotationSpeed = ref(0.005);
 const onFileUploaded = (file) => {
   const url = URL.createObjectURL(file);
   audioPlayer.value.src = url;
+  audioPlayer.value.volume = 0;
   audioPlayer.value.play();
   isPlaying.value = true;
   setupAudio(audioPlayer.value);
