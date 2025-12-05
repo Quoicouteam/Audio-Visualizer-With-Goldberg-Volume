@@ -7,7 +7,7 @@ import glsl from 'vite-plugin-glsl'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Audio-Visualizer/',
+  base: '/Audio-Visualizer-With-Goldberg-Volume/',
   plugins: [
     vue(),
     vueDevTools(),
