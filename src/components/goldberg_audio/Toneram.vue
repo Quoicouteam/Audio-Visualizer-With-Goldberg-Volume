@@ -2,7 +2,6 @@
   <div class="tonearm">
     <div class="arm"></div>
     <div class="head"></div>
-    <div class="needle"></div>
   </div>
 </template>
 
@@ -51,23 +50,6 @@ export default {
   box-shadow:
       0 4px 8px rgba(0,0,0,0.5),
       inset 0 0 6px rgba(255,255,255,0.4);
-}
-
-/* ——— Игла ——— */
-.needle {
-  position: absolute;
-  top: 52px;
-  left: 120px;
-
-  width: 3px;
-  height: 14px;
-  background: #222;
-
-  border-radius: 2px;
-
-  box-shadow:
-      inset 0 0 3px rgba(255,255,255,0.3),
-      0 2px 3px rgba(0,0,0,0.6);
 }
 </style>
 

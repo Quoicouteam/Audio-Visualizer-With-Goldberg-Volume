@@ -1,5 +1,5 @@
 <template>
-  <div class="patiphon-box gofra">
+  <div class="patiphon-box gloss">
     <spinner :animation-rate="modelValue" />
     <toneram />
     <lever
@@ -49,16 +49,6 @@ export default {
       inset 0 -6px 12px rgba(0,0,0,0.4);
 }
 
-.gofra {
-  background: repeating-linear-gradient(
-      90deg,
-      #0e0e0e,
-      #2c2c2c 5px,
-      #000000 5px,
-      #2c2c2c 10px
-  );
-}
-
 .switches {
   position: absolute;
   bottom: 10px;
@@ -89,4 +79,43 @@ export default {
       inset 0 -4px 5px rgba(0,0,0,0.4),
       0 3px 8px rgba(0,0,0,0.6);
 }
+
+.gloss {
+  background: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1a 40%,
+    #2a2a2a 60%,
+    #0c0c0c 100%
+  );
+
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.25),  /* верхний слабый бликовый свет */
+    inset 0 -4px 8px rgba(0,0,0,0.6),       /* нижняя тень */
+    0 6px 14px rgba(0,0,0,0.6);             /* внешний мягкий объем */
+
+  /* Эффект глянцевой полосы */
+  position: relative;
+  overflow: hidden;
+}
+
+.gloss::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+
+  background: linear-gradient(
+    115deg,
+    rgba(255,255,255,0.15) 0%,
+    rgba(255,255,255,0.02) 35%,
+    rgba(0,0,0,0) 60%
+  );
+
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
 </style>
