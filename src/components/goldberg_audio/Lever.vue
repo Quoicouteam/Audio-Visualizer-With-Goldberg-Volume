@@ -1,6 +1,5 @@
 <template>
   <div class="lever-block">
-    <!-- Тройной семисегментный индикатор -->
     <seven-segment-counter :digit="digits[0]" />
     <seven-segment-counter :digit="digits[1]" />
     <seven-segment-counter :digit="digits[2]" />

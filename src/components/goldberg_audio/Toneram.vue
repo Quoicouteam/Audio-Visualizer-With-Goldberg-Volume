@@ -1,13 +1,50 @@
 <template>
   <div class="tonearm">
-    <div class="arm"></div>
-    <div class="head"></div>
+    <div
+      class="arm"
+      :style="{ transform: `rotate(${angle}deg)` }"
+      @mousedown="startDrag"
+    >
+      <div class="head"></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Tonearm',
+  data() {
+    return {
+      angle: 0,
+      dragging: false,
+      startX: 0,
+      startAngle: 0,
+      maxAngle: 30,
+    };
+  },
+  methods: {
+    startDrag(e) {
+      e.preventDefault();
+      this.dragging = true;
+      this.startX = e.clientX;
+      this.startAngle = this.angle;
+      window.addEventListener('mousemove', this.onDrag);
+      window.addEventListener('mouseup', this.stopDrag);
+    },
+    onDrag(e) {
+      if (!this.dragging) return;
+      const delta = e.clientX - this.startX;
+      let newAngle = this.startAngle + delta / 2; // масштабирование движения
+      if (newAngle > this.maxAngle) newAngle = this.maxAngle;
+      if (newAngle < -this.maxAngle) newAngle = -this.maxAngle;
+      this.angle = newAngle;
+    },
+    stopDrag() {
+      this.dragging = false;
+      window.removeEventListener('mousemove', this.onDrag);
+      window.removeEventListener('mouseup', this.stopDrag);
+    }
+  }
 };
 </script>
 
@@ -15,41 +52,27 @@ export default {
 .tonearm {
   position: absolute;
   top: 3%;
-
-  pointer-events: none;
+  left: 20px;
+  pointer-events: auto; /* чтобы мышь могла взаимодействовать */
 }
-
 
 .arm {
   position: absolute;
-  top: 40px;
-  left: 10px;
-
+  top: 20px;
+  left: 0;
   width: 100px;
   height: 8px;
   border-radius: 4px;
-
   background: linear-gradient(to right, #d6d6d6, #9c9c9c);
   box-shadow:
-      inset 0 0 3px rgba(255,255,255,0.6),
-      inset 0 -3px 4px rgba(0,0,0,0.3),
-      0 4px 10px rgba(0,0,0,0.4);
+    inset 0 0 3px rgba(255,255,255,0.6),
+    inset 0 -3px 4px rgba(0,0,0,0.3),
+    0 4px 10px rgba(0,0,0,0.4);
+  transform-origin: left center;
+  cursor: grab;
 }
 
-
-.head {
-  position: absolute;
-  top: 32px;
-  left: 100px;
-
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-
-  background: radial-gradient(circle at 30% 30%, #fff8, #444);
-  box-shadow:
-      0 4px 8px rgba(0,0,0,0.5),
-      inset 0 0 6px rgba(255,255,255,0.4);
+.arm:active {
+  cursor: grabbing;
 }
 </style>
-

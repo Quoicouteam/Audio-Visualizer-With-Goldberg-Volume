@@ -96,7 +96,6 @@ export default {
 
 
   position: relative;
-  overflow: hidden;
 }
 
 .gloss::after {
