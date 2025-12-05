@@ -1,12 +1,18 @@
-# Audio Visualizer
+# Visualiseur audio interactif – Rube Goldberg Edition
 
-Visualiseur audio 3D et 2D réactif développé pendant la Nuit de l'Info.
+Un visualiseur audio 3D et 2D réactif développé pendant la **Nuit de l'Info**.
 
-🌐 **Accéder au site hébergé :** https://quoicouteam.github.io/Audio-Visualizer/
+Cette interface s’inspire des **machines de Rube Goldberg**, c’est-à-dire des systèmes volontairement complexes pour accomplir une tâche simple. Ici, la tâche consiste à **contrôler le volume audio du système**, mais de manière ludique et visuellement captivante.
 
-## Description
+L’utilisateur peut interagir avec un **phonographe animé** :
+- un **levier** qui ajuste le volume,
+- un **disque rotatif** et un **bras de lecture** (toneram) qui bougent en synchronisation avec le son,
+- de petits **interrupteurs et détails mécaniques** pour enrichir l’esthétique.
 
-Application web de visualisation audio en temps réel avec shaders GLSL personnalisés. Le visualiseur analyse les fréquences audio (bass, mid, treble) et génère des animations 3D et 2D réactives.
+Chaque élément réagit au volume et aux interactions, transformant un simple contrôle audio en **expérience visuelle et tactile** inspirée des machines rétro-mécaniques.
+
+
+🌐 **Accéder au site hébergé :** https://quoicouteam.github.io/Audio-Visualizer-With-Goldberg-Volume/
 
 ## Technologies Utilisées
 
@@ -49,22 +55,54 @@ Application web de visualisation audio en temps réel avec shaders GLSL personna
 - Mode plein écran pour visualisations 2D
 - Support de textures avec masque alpha
 
+### Interaction et Volume
+- Contrôle du **volume** via un **levier animé**
+- **Engrenages et disques** synchronisés avec le son
+- **Switches et détails mécaniques** pour enrichir l’esthétique
+- **Animations réactives** aux variations de volume
+
 ### Architecture
 ```
+# Structure du Projet
+
+Ce projet est structuré autour des composants d'interface utilisateur (Vue) et des scripts de contrôle pour une application de visualisation et de manipulation audio/graphique.
+
+## 📁 Arborescence du Code Source (`src/`)
+
 src/
-├── components/           # Composants Vue
-│   ├── AudioControls.vue
-│   ├── ShaderSelector.vue
-│   └── ShaderParamsControl.vue
-├── scripts/
-│   ├── audioManager.js       # Gestion audio et analyse fréquences
-│   ├── shaderManager.js      # Configuration des shaders
-│   ├── 2DVisualizer.js       # Génération plane 2D
-│   ├── 3DVisualizer.js       # Génération mesh 3D
-│   └── controllers/          # Contrôleurs (caméra, scène, rendu)
-└── shaders/
-    ├── 2d/                   # Shaders fragment 2D
-    └── 3d/                   # Shaders vertex et fragment 3D
+├── components/                 # Composants Vue (Interface Utilisateur)
+│   ├── goldberg_audio/         # Composants spécifiques à la partie "Goldberg Audio"
+│   │   ├── Lever.vue           # Composant de levier (interface de contrôle)
+│   │   ├── Patiphon.vue        # Composant lié à l'élément "Patiphon"
+│   │   ├── SevenSegmentCounter.vue # Affichage d'un compteur à sept segments
+│   │   └── Spinner.vue         # Indicateur de chargement ou de rotation
+│   ├── Toneram.vue             # Composant "Toneram"
+│   ├── AssetUploader.vue       # Composant pour le téléchargement de ressources
+│   ├── AudioControls.vue       # Contrôles pour la lecture et les paramètres audio
+│   ├── AudioFileUploader.vue   # Composant pour le téléchargement de fichiers audio
+│   ├── ModeSelector.vue        # Sélecteur du mode de fonctionnement de l'application
+│   ├── Rotation3DControl.vue   # Contrôles pour la rotation des éléments 3D
+│   ├── ShaderParamsControl.vue # Contrôles des paramètres (uniformes) des shaders
+│   ├── ShaderSelector.vue      # Sélecteur pour choisir le shader actif
+│   ├── TestComponent.vue       # Composant utilisé pour des tests ou débogage
+│   └── VisualizerControls.vue  # Contrôles généraux de la visualisation
+├── scripts/                    # Logique Applicative (Contrôleurs, Gestionnaires et Visualisation)
+│   ├── controllers/            # Contrôleurs pour la gestion de l'état, de l'interaction et du rendu
+│   │   ├── animationController.js # Contrôle du cycle et de la boucle d'animation
+│   │   ├── cameraController.js # Gestion de la position et de la projection de la caméra
+│   │   ├── modeController.js   # Gestion de l'état du mode actif de l'application
+│   │   ├── orbitController.js  # Contrôleur pour la manipulation interactive de la caméra (orbite)
+│   │   ├── rendererController.js # Gestion de l'instance et des options du moteur de rendu
+│   │   └── sceneController.js  # Gestion des objets présents dans la scène
+│   ├── 2DVisualizer.js         # Logique de génération et de mise à jour des visualisations 2D
+│   ├── 3DVisualizer.js         # Logique de génération et de mise à jour des visualisations 3D
+│   ├── audioManager.js         # Gestion audio, chargement, lecture et analyse (FFT)
+│   ├── config.js               # Fichier de configuration globale de l'application
+│   ├── sceneManager.js         # Gestionnaire de haut niveau pour l'organisation des scènes
+│   └── shaderManager.js        # Gestion, compilation et mise à jour des shaders
+├── shaders/                    # (Dossier des ressources GLSL)
+├── App.vue                     # Composant Vue racine de l'application
+└── main.js                     # Point d'entrée de l'application (initialisation de Vue)
 ```
 
 ## Installation
@@ -79,8 +117,9 @@ npm run dev
 1. Charger un fichier audio ou activer le microphone
 2. Sélectionner un mode (2D ou 3D)
 3. Choisir un shader dans le sélecteur
-4. Ajuster les paramètres selon vos préférences
-5. Optionnel: charger une image personnalisée (mode 2D avec masque alpha)
+4. Jouez avec le levier pour ajuster le volume
+5. Ajuster les paramètres selon vos préférences
+6. Optionnel: charger une image personnalisée (mode 2D avec masque alpha)
 
 ## Développement
 
