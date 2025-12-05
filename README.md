@@ -12,7 +12,7 @@ L’utilisateur peut interagir avec un **phonographe animé** :
 Chaque élément réagit au volume et aux interactions, transformant un simple contrôle audio en **expérience visuelle et tactile** inspirée des machines rétro-mécaniques.
 
 
-🌐 **Accéder au site hébergé :** https://quoicouteam.github.io/Audio-Visualizer-With-Goldberg-Volume/
+🌐 **Accéder au site hébergé :** [https://quoicouteam.github.io/Audio-Visualizer-With-Goldberg-Volume/](https://quoicouteam.github.io/Audio-Visualizer-With-Goldberg-Volume/)
 
 ## Technologies Utilisées
 
