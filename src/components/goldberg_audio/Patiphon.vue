@@ -25,7 +25,7 @@ export default {
   components: { Spinner, Lever, Toneram },
   methods: {
     handleProgressChange(value) {
-      this.$emit('update:modelValue', value); // просто уведомляем родителя
+      this.$emit('update:modelValue', value);
     }
   }
 }
@@ -90,11 +90,11 @@ export default {
   );
 
   box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.25),  /* верхний слабый бликовый свет */
-    inset 0 -4px 8px rgba(0,0,0,0.6),       /* нижняя тень */
-    0 6px 14px rgba(0,0,0,0.6);             /* внешний мягкий объем */
+    inset 0 2px 4px rgba(255,255,255,0.25),
+    inset 0 -4px 8px rgba(0,0,0,0.6),
+    0 6px 14px rgba(0,0,0,0.6);
 
-  /* Эффект глянцевой полосы */
+
   position: relative;
   overflow: hidden;
 }

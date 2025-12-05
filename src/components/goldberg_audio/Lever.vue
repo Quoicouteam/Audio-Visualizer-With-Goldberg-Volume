@@ -38,10 +38,9 @@ export default {
   },
 
   computed: {
-    // Массив цифр для трёх семисегментных индикаторов
     digits() {
-      const val = Math.max(0, Math.min(100, Math.floor(this.localValue))); // ограничение 0-100
-      const str = val.toString().padStart(3, "0"); // добавляем ведущие нули
+      const val = Math.max(0, Math.min(100, Math.floor(this.localValue)));
+      const str = val.toString().padStart(3, "0");
       return str.split("").map(Number);
     }
   },

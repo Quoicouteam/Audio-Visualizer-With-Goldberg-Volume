@@ -19,7 +19,7 @@ export default {
   pointer-events: none;
 }
 
-/* ——— Рычаг (тонарм) ——— */
+
 .arm {
   position: absolute;
   top: 40px;
@@ -36,7 +36,7 @@ export default {
       0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* ——— Головка (держатель иглы) ——— */
+
 .head {
   position: absolute;
   top: 32px;

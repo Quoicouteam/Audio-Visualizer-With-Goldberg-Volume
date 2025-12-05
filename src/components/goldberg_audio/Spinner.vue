@@ -86,7 +86,7 @@ export default {
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1);
 
-  /* создаём эффект концентрических полос */
+
   box-shadow:
       0 0 3px rgba(255,255,255,0.05),
       inset 0 0 5px rgba(255,255,255,0.08);
@@ -96,7 +96,7 @@ export default {
   animation-iteration-count: infinite;
 }
 
-/* центральный цветной кружок — более глянцевый */
+
 .vinyl-center {
   position: absolute;
   width: 40px;

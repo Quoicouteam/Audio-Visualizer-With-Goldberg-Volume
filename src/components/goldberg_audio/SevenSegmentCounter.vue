@@ -42,8 +42,8 @@ export default {
   display: inline-block;
   margin: 0.5px;
   position: relative;
-  width: 12px;   /* ещё меньше */
-  height: 22px;  /* уменьшили высоту */
+  width: 12px;
+  height: 22px;
 }
 
 .segment {
@@ -57,49 +57,49 @@ export default {
   background-color: red;
 }
 
-/* Верхний сегмент A */
+
 .segment-0 {
   top: 0;
   left: 1px;
   width: 10px;
   height: 2px;
 }
-/* Верхний правый сегмент B */
+
 .segment-1 {
   top: 1px;
   right: 0;
   width: 2px;
   height: 9px;
 }
-/* Нижний правый сегмент C */
+
 .segment-2 {
   bottom: 1px;
   right: 0;
   width: 2px;
   height: 9px;
 }
-/* Нижний сегмент D */
+
 .segment-3 {
   bottom: 0;
   left: 1px;
   width: 10px;
   height: 2px;
 }
-/* Нижний левый сегмент E */
+
 .segment-4 {
   bottom: 1px;
   left: 0;
   width: 2px;
   height: 9px;
 }
-/* Верхний левый сегмент F */
+
 .segment-5 {
   top: 1px;
   left: 0;
   width: 2px;
   height: 9px;
 }
-/* Средний сегмент G */
+
 .segment-6 {
   top: 10px;
   left: 1px;
