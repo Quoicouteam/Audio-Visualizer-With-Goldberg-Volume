@@ -1,12 +1,15 @@
 <script setup>
+import { ref } from 'vue'
+import Patiphon from "@/components/goldberg_audio/Patiphon.vue"
 defineProps({
   isPlaying: Boolean
 });
 
+const progress = ref(0);
 const emit = defineEmits(['toggle-play', 'stop', 'volume-change']);
 
-const handleVolumeChange = (event) => {
-  emit('volume-change', event.target.value);
+const handleVolumeChange = () => {
+  emit('volume-change', Number(progress.value)/100);
 };
 </script>
 
@@ -28,16 +31,10 @@ const handleVolumeChange = (event) => {
       ⏹
     </button>
 
-    <div class="volume-wrapper">
-      <span>🔊</span>
-      <input
-        type="range"
-        min="0"
-        max="1"
-        step="0.01"
-        @input="handleVolumeChange"
-      >
-    </div>
+    <patiphon
+      v-model="progress"
+      @update:model-value="handleVolumeChange"
+    ></patiphon>
   </div>
 </template>
 
